@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galerie — Mon Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #c9a96e;
+      --accent-dim: #7a5e35;
+      --text: #e8e0d5;
+      --text-muted: #7a7168;
+      --gap: 12px;
+      --radius: 6px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .count-badge {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── FILTERS ── */
+    .controls {
+      padding: 28px 40px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(201,169,110,0.06);
+    }
+
+    .search-wrap {
+      margin-left: auto;
+      position: relative;
+    }
+
+    .search-wrap input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      padding: 7px 14px 7px 36px;
+      border-radius: 2px;
+      outline: none;
+      width: 200px;
+      transition: border-color 0.25s;
+    }
+
+    .search-wrap input::placeholder { color: var(--text-muted); }
+    .search-wrap input:focus { border-color: var(--accent-dim); }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.4;
+    }
+
+    /* ── HERO TITLE ── */
+    .hero {
+      padding: 52px 40px 32px;
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-dim), transparent);
+      margin-bottom: 14px;
+    }
+
+    /* ── GRID ── */
+    .grid-wrap {
+      padding: 24px 40px 60px;
+    }
+
+    .grid {
+      columns: 4 280px;
+      column-gap: var(--gap);
+    }
+
+    .card {
+      break-inside: avoid;
+      margin-bottom: var(--gap);
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-3px);
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s ease, filter 0.3s ease;
+      filter: brightness(0.92) saturate(0.85);
+    }
+
+    .card:hover img {
+      transform: scale(1.04);
+      filter: brightness(1) saturate(1.1);
+    }
+
+    /* placeholder quand l'image est manquante */
+    .card .placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1.2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      gap: 10px;
+    }
+
+    .card .placeholder svg { opacity: 0.25; }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+    }
+
+    .card:hover .card-overlay { opacity: 1; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .card-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    /* tall cards variation */
+    .card:nth-child(3n+1) img { aspect-ratio: 3/4; object-fit: cover; }
+    .card:nth-child(3n+2) img { aspect-ratio: 4/3; object-fit: cover; }
+    .card:nth-child(3n)   img { aspect-ratio: 1/1; object-fit: cover; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lb-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      animation: lbIn 0.3s ease;
+    }
+
+    .lb-inner img {
+      display: block;
+      max-width: 100%;
+      max-height: 88vh;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+    }
+
+    .lb-caption {
+      position: absolute;
+      bottom: -38px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-close:hover { border-color: var(--accent); color: var(--accent); }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(22,22,22,0.7);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-nav:hover { border-color: var(--accent); color: var(--accent); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+
+    /* ── EMPTY STATE ── */
+    .empty {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+      gap: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes lbIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      header { padding: 14px 20px; }
+      .controls, .hero, .grid-wrap { padding-left: 20px; padding-right: 20px; }
+      .hero h1 { font-size: 2.8rem; }
+      .search-wrap input { width: 160px; }
+      .grid { columns: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Galerie</div>
+  <div class="header-right">
+    <span class="count-badge" id="visibleCount">30 photos</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Notre<br><em>Collection</em></h1>
+  <div class="hero-line"></div>
+</section>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <span class="filter-label">Afficher</span>
+  <button class="filter-btn active" data-filter="all">Tout</button>
+  <button class="filter-btn" data-filter="1-10">1 – 10</button>
+  <button class="filter-btn" data-filter="11-20">11 – 20</button>
+  <button class="filter-btn" data-filter="21-30">21 – 30</button>
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Rechercher…" />
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="grid" id="gallery"></div>
+  <div class="empty" id="emptyState">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Aucune photo trouvée
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt="" />
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+</div>
+
+<script>
+  // ─── CONFIG ───────────────────────────────────────────────
+  // Extensions réelles détectées dans le dossier.
+  // photo2 est un .mp4 (vidéo) — ignoré.
+  // Ajoutez ou modifiez les entrées si vous renommez des fichiers.
+
+  const photos = [
+    { id:  1, src: 'photo1.jpg',  name: 'Photo 1'  },
+    // photo2 est une vidéo MP4 — non affichée
+    { id:  3, src: 'photo3.png',  name: 'Photo 3'  },
+    { id:  4, src: 'photo4.jpg',  name: 'Photo 4'  },
+    { id:  5, src: 'photo5.png',  name: 'Photo 5'  },
+    { id:  6, src: 'photo6.jpg',  name: 'Photo 6'  },
+    { id:  7, src: 'photo7.png',  name: 'Photo 7'  },
+    { id:  8, src: 'photo8.jpg',  name: 'Photo 8'  },
+    { id:  9, src: 'photo9.png',  name: 'Photo 9'  },
+    { id: 10, src: 'photo10.jpg', name: 'Photo 10' },
+    { id: 11, src: 'photo11.png', name: 'Photo 11' },
+    { id: 12, src: 'photo12.png', name: 'Photo 12' },
+    { id: 13, src: 'photo13.png', name: 'Photo 13' },
+    { id: 14, src: 'photo14.png', name: 'Photo 14' },
+    { id: 15, src: 'photo15.png', name: 'Photo 15' },
+    { id: 16, src: 'photo16.png', name: 'Photo 16' },
+    { id: 17, src: 'photo17.png', name: 'Photo 17' },
+    { id: 18, src: 'photo18.png', name: 'Photo 18' },
+    { id: 19, src: 'photo19.png', name: 'Photo 19' },
+    { id: 20, src: 'photo20.png', name: 'Photo 20' },
+    { id: 21, src: 'photo21.jpeg',name: 'Photo 21' },
+    { id: 22, src: 'photo22.png', name: 'Photo 22' },
+    { id: 23, src: 'photo23.png', name: 'Photo 23' },
+    { id: 24, src: 'photo24.png', name: 'Photo 24' },
+    { id: 25, src: 'photo25.png', name: 'Photo 25' },
+    { id: 26, src: 'photo26.png', name: 'Photo 26' },
+    { id: 27, src: 'photo27.png', name: 'Photo 27' },
+    { id: 28, src: 'photo28.png', name: 'Photo 28' },
+    { id: 29, src: 'photo29.png', name: 'Photo 29' },
+    { id: 30, src: 'photo30.png', name: 'Photo 30' },
+  ];
+
+  // ─── STATE ────────────────────────────────────────────────
+  let filtered = [...photos];
+  let currentFilter = 'all';
+  let lbIndex = 0;
+
+  // ─── BUILD GRID ───────────────────────────────────────────
+  const gallery     = document.getElementById('gallery');
+  const emptyState  = document.getElementById('emptyState');
+  const visibleCount = document.getElementById('visibleCount');
+
+  function buildGrid(list) {
+    gallery.innerHTML = '';
+    emptyState.style.display = list.length ? 'none' : 'flex';
+    visibleCount.textContent = `${list.length} photo${list.length > 1 ? 's' : ''}`;
+
+    list.forEach((photo, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = `${(idx % 12) * 40}ms`;
+      card.dataset.index = idx;
+
+      // Tentative de chargement de l'image réelle
+      const img = document.createElement('img');
+      img.alt = photo.name;
+      img.loading = 'lazy';
+
+      // Placeholder si le fichier est introuvable
+      img.onerror = () => {
+        card.innerHTML = `
+          <div class="placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            ${photo.name}
+          </div>
+          <div class="card-overlay">
+            <div class="card-meta">
+              <span class="card-name">${photo.name}</span>
+              <span class="card-num">#${String(photo.id).padStart(2,'0')}</span>
+            </div>
+          </div>`;
+        card.dataset.index = idx;
+        card.addEventListener('click', () => openLightbox(idx));
+      };
+
+      img.src = photo.src;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'card-overlay';
+      overlay.innerHTML = `
+        <div class="card-meta">
+          <span class="card-name">${photo.name}</span>
+          <span class="card-num">#${String(photo.id).padStart(2,'0')}</span>
+        </div>`;
+
+      card.appendChild(img);
+      card.appendChild(overlay);
+      card.addEventListener('click', () => openLightbox(idx));
+      gallery.appendChild(card);
+    });
+  }
+
+  // ─── FILTERS ──────────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    filtered = photos.filter(p => {
+      const matchSearch = !q || p.name.toLowerCase().includes(q) || String(p.id).includes(q);
+      let matchFilter = true;
+      if (currentFilter === '1-10')  matchFilter = p.id >= 1  && p.id <= 10;
+      if (currentFilter === '11-20') matchFilter = p.id >= 11 && p.id <= 20;
+      if (currentFilter === '21-30') matchFilter = p.id >= 21 && p.id <= 30;
+      return matchSearch && matchFilter;
+    });
+    buildGrid(filtered);
+  }
+
+  // ─── LIGHTBOX ─────────────────────────────────────────────
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+
+  function openLightbox(idx) {
+    lbIndex = idx;
+    updateLb();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function updateLb() {
+    const photo = filtered[lbIndex];
+    lbImg.src = photo.src;
+    lbImg.alt = photo.name;
+    lbCaption.textContent = `${photo.name}  ·  ${lbIndex + 1} / ${filtered.length}`;
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => {
+    lbIndex = (lbIndex - 1 + filtered.length) % filtered.length;
+    updateLb();
+  });
+  document.getElementById('lbNext').addEventListener('click', () => {
+    lbIndex = (lbIndex + 1) % filtered.length;
+    updateLb();
+  });
+
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + filtered.length) % filtered.length; updateLb(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % filtered.length; updateLb(); }
+  });
+
+  // ─── INIT ─────────────────────────────────────────────────
+  buildGrid(photos);
+</script>
+</body>
+</html>

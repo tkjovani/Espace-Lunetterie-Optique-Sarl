@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Lunetterie Optique Sarl — Le plaisir de mieux voir !</title>
+  <meta name="description" content="Espace Lunetterie Optique Sarl — Spécialiste en examens de vue, lunettes optiques, solaires et lentilles de contact à Yaoundé et Douala." />
+  <meta name="keywords" content="opticien Yaoundé, lunettes Cameroun, examen de vue, lentilles contact, optique Douala" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:       #0B1C34;
+      --deep:       #061022;
+      --blue:       #1A3A6B;
+      --sky:        #2E7BC4;
+      --gold:       #C9A84C;
+      --gold-light: #E8C97A;
+      --white:      #FFFFFF;
+      --off-white:  #F7F6F2;
+      --grey-light: #E8EAF0;
+      --grey:       #9AA0AE;
+      --grey-dark:  #5A6173;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+
+      --radius:    4px;
+      --radius-lg: 12px;
+      --shadow:    0 8px 40px rgba(11,28,52,0.15);
+      --shadow-gold: 0 4px 24px rgba(201,168,76,0.25);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      --space-xs:  clamp(8px,  1.5vw, 12px);
+      --space-sm:  clamp(12px, 2vw,   20px);
+      --space-md:  clamp(20px, 3vw,   32px);
+      --space-lg:  clamp(32px, 5vw,   64px);
+      --space-xl:  clamp(48px, 7vw,   100px);
+      --space-2xl: clamp(64px, 10vw,  140px);
+
+      --px: clamp(16px, 5vw, 80px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--navy);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; outline: none; font-family: var(--font-body); }
+    ul, ol { list-style: none; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--deep); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4.5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--sky); }
+    .section-title.white { color: var(--white); }
+    .section-title.white em { color: var(--gold-light); }
+
+    .section-sub {
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      color: var(--grey-dark);
+      max-width: 540px;
+      line-height: 1.75;
+    }
+    .section-sub.white { color: rgba(255,255,255,0.72); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: clamp(10px,2vw,14px) clamp(20px,3.5vw,32px);
+      font-family: var(--font-body);
+      font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-gold { background: var(--gold); color: var(--deep); }
+    .btn-gold:hover { background: var(--gold-light); box-shadow: var(--shadow-gold); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.5); color: var(--white); background: transparent; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: var(--blue); transform: translateY(-2px); }
+
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9000;
+      transition: var(--transition);
+      padding: 0 var(--px);
+    }
+    #navbar.scrolled {
+      background: rgba(6,16,34,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: clamp(60px, 8vw, 72px);
+      gap: 12px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .nav-logo .logo-main {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo .logo-main span { color: var(--gold); }
+    .nav-logo .logo-sub {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.5vw, 36px);
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+      white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-links a.btn-catalogue {
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.5);
+      padding: 5px 12px;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .nav-links a.btn-catalogue:hover { background: var(--gold); color: var(--deep); border-color: var(--gold); }
+    .nav-links a.btn-catalogue::after { display: none; }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 8px;
+      z-index: 10000;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--deep);
+      z-index: 8999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(20px, 4vw, 36px);
+      padding: 80px var(--px) 40px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      color: var(--white);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .close-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none;
+      color: var(--white);
+      font-size: 1.8rem;
+      line-height: 1;
+      padding: 4px 8px;
+    }
+    .mobile-menu a.mobile-catalogue {
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 8px 28px;
+      border-radius: 2px;
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
+    }
+    .mobile-menu a.mobile-catalogue:hover { background: var(--gold); color: var(--deep); }
+
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(6,16,34,0.92) 0%, rgba(11,28,52,0.78) 50%, rgba(26,58,107,0.65) 100%),
+        url('https://images.unsplash.com/photo-1559729726-3f4a15ffe38f?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg, transparent 0px, transparent 60px,
+        rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px
+      );
+      animation: shimmer 8s ease-in-out infinite alternate;
+    }
+    @keyframes shimmer { from{opacity:0.5;} to{opacity:1;} }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(80px,12vw,120px) var(--px) clamp(120px,18vw,200px);
+      max-width: 860px;
+      width: 100%;
+      animation: heroFadeIn 1.2s ease-out both;
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: clamp(16px, 3vw, 28px);
+      animation: heroFadeIn 1.2s ease-out 0.2s both;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 8vw, 6rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 8px;
+      animation: heroFadeIn 1.2s ease-out 0.3s both;
+    }
+    .hero-title strong { display: block; font-weight: 600; color: var(--gold-light); }
+
+    .hero-slogan {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 3vw, 1.7rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: clamp(20px, 4vw, 32px);
+      animation: heroFadeIn 1.2s ease-out 0.5s both;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+      margin-bottom: clamp(24px, 4vw, 40px);
+      line-height: 1.8;
+      animation: heroFadeIn 1.2s ease-out 0.6s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      animation: heroFadeIn 1.2s ease-out 0.7s both;
+    }
+
+    .hero-badges {
+      position: absolute;
+      bottom: clamp(20px, 4vw, 40px);
+      left: var(--px);
+      right: var(--px);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      z-index: 2;
+      animation: heroFadeIn 1.2s ease-out 0.9s both;
+    }
+    .hero-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 2px;
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.05em;
+    }
+    .hero-badge-item .icon {
+      width: 26px; height: 26px;
+      background: rgba(201,168,76,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: clamp(20px,4vw,40px);
+      right: var(--px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      animation: scrollAnim 2s ease-in-out infinite;
+    }
+    @keyframes scrollAnim {
+      0%,100%{transform:scaleY(1);opacity:1;}
+      50%{transform:scaleY(0.5);opacity:0.4;}
+    }
+
+    section { padding: var(--space-xl) var(--px); }
+    .section-head { margin-bottom: var(--space-lg); }
+
+    #why { background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: clamp(14px, 2vw, 24px);
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px,4vw,40px) clamp(20px,3vw,32px);
+      border-bottom: 3px solid transparent;
+      transition: var(--transition);
+      box-shadow: 0 2px 16px rgba(11,28,52,0.06);
+    }
+    .why-card:hover {
+      border-bottom-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+    .why-icon {
+      width: clamp(44px,6vw,56px); height: clamp(44px,6vw,56px);
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.3rem,2.5vw,1.6rem);
+      margin-bottom: clamp(14px,2.5vw,20px);
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .why-card p {
+      font-size: clamp(0.82rem, 1.5vw, 0.88rem);
+      color: var(--grey-dark);
+      line-height: 1.7;
+    }
+
+    #stats {
+      background: linear-gradient(135deg, var(--deep) 0%, var(--navy) 50%, var(--blue) 100%);
+      padding: var(--space-lg) var(--px);
+      position: relative;
+      overflow: hidden;
+    }
+    #stats::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 70% at 80% 50%, rgba(46,123,196,0.1) 0%, transparent 70%);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%,160px), 1fr));
+      gap: clamp(16px, 3vw, 40px);
+      position: relative; z-index: 1;
+    }
+    .stat-item {
+      text-align: center;
+      padding: clamp(20px,3.5vw,32px) clamp(12px,2vw,24px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+    }
+    .stat-item:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.05); }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-number span { color: var(--gold); }
+    .stat-label {
+      font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    #services { background: var(--white); }
+
+    .services-banner {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      padding: clamp(20px,3vw,28px) clamp(20px,4vw,36px);
+      border-radius: var(--radius-lg);
+      margin-bottom: clamp(32px,5vw,60px);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .services-banner .quote-mark {
+      font-family: var(--font-display);
+      font-size: clamp(3rem,6vw,5rem);
+      color: var(--gold);
+      line-height: 0.6;
+      flex-shrink: 0;
+    }
+    .services-banner p {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: clamp(16px, 2.5vw, 28px);
+    }
+
+    .service-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(11,28,52,0.08);
+      transition: var(--transition);
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      display: flex; flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: rgba(201,168,76,0.3);
+    }
+
+    .service-img-wrap {
+      height: clamp(140px, 20vw, 200px);
+      overflow: hidden; position: relative;
+    }
+    .service-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(2rem,4vw,3rem);
+      transition: transform 0.6s ease;
+    }
+    .service-card:hover .service-img-placeholder { transform: scale(1.06); }
+
+    .service-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--gold);
+      color: var(--deep);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    .service-body {
+      padding: clamp(20px,3vw,28px);
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .service-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .service-body h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem,2.5vw,1.3rem);
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--navy);
+    }
+    .service-body p {
+      font-size: clamp(0.82rem,1.5vw,0.86rem);
+      color: var(--grey-dark);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    #accreditations { background: var(--off-white); }
+
+    .accred-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(12px,2vw,20px);
+      align-items: stretch;
+      justify-content: center;
+      margin-top: clamp(32px,5vw,48px);
+    }
+    .accred-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      border-radius: var(--radius-lg);
+      padding: clamp(16px,2.5vw,20px) clamp(16px,3vw,28px);
+      transition: var(--transition);
+      flex: 1;
+      min-width: min(100%, 220px);
+      max-width: 320px;
+      box-shadow: 0 2px 16px rgba(11,28,52,0.04);
+    }
+    .accred-badge:hover { border-color: var(--gold); box-shadow: var(--shadow-gold); transform: translateY(-4px); }
+    .accred-icon {
+      width: clamp(40px,5vw,50px); height: clamp(40px,5vw,50px);
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.1rem,2vw,1.4rem);
+      flex-shrink: 0;
+    }
+    .accred-badge strong { display: block; font-size: clamp(0.8rem,1.5vw,0.88rem); font-weight: 600; margin-bottom: 2px; }
+    .accred-badge span { font-size: clamp(0.7rem,1.2vw,0.75rem); color: var(--grey-dark); }
+
+    #agences { background: var(--white); }
+
+    .agences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(20px, 3vw, 32px);
+    }
+
+    .agence-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      background: var(--white);
+    }
+    .agence-card:hover { transform: translateY(-6px); }
+
+    .agence-header {
+      padding: clamp(20px,3.5vw,28px) clamp(20px,3.5vw,28px) clamp(16px,2.5vw,20px);
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      position: relative;
+    }
+    .agence-city {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .agence-header h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem,3vw,1.5rem);
+      font-weight: 400;
+      color: var(--white);
+    }
+    .agence-num {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem,5vw,4rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.07);
+      line-height: 1;
+    }
+
+    .agence-map {
+      height: clamp(160px,20vw,200px);
+      background: var(--grey-light);
+      overflow: hidden;
+    }
+    .agence-map-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e8f0fe, #f0f4ff);
+      gap: 6px;
+      color: var(--grey-dark);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 12px;
+    }
+    .agence-map-placeholder span { font-size: 1.8rem; }
+
+    .agence-body { padding: clamp(16px,3vw,24px) clamp(16px,3vw,28px); }
+
+    .agence-info-row {
+      display: flex; align-items: flex-start;
+      gap: 10px; margin-bottom: 12px;
+    }
+    .agence-info-icon {
+      width: 30px; height: 30px;
+      background: rgba(11,28,52,0.06);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .agence-info-text { font-size: clamp(0.78rem,1.5vw,0.83rem); line-height: 1.6; color: var(--grey-dark); }
+    .agence-info-text strong {
+      display: block; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--navy); margin-bottom: 2px;
+    }
+
+    .agence-phones { display: flex; flex-direction: column; gap: 6px; margin: 14px 0; }
+    .phone-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 14px;
+      background: rgba(11,28,52,0.04);
+      border-radius: 8px;
+      font-size: clamp(0.78rem,1.5vw,0.84rem);
+      color: var(--navy); font-weight: 500;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .phone-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* ═══════════════════════════════════════════════════
+       GALERIE — VERSION AMÉLIORÉE AVEC VRAIES IMAGES
+    ═══════════════════════════════════════════════════ */
+    #galerie { background: var(--deep); }
+    #galerie .section-title { color: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      gap: clamp(6px, 1.5vw, 10px);
+      margin-top: clamp(28px, 5vw, 48px);
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(3, clamp(160px, 18vw, 220px));
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--navy);
+    }
+
+    /* Desktop spanning */
+    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 4; }
+    .gallery-item:nth-child(3) { grid-column: span 3; }
+    .gallery-item:nth-child(4) { grid-column: span 4; }
+    .gallery-item:nth-child(5) { grid-column: span 3; }
+    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(7) { grid-column: span 5; }
+    .gallery-item:nth-child(8) { grid-column: span 3; }
+
+    /* Image réelle */
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: brightness(0.88);
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    /* Overlay au survol */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(6,16,34,0.85) 0%,
+        rgba(6,16,34,0.2) 50%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px 18px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* Toujours visible : étiquette discrète en bas */
+    .gallery-label-always {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 14px 12px;
+      background: linear-gradient(to top, rgba(6,16,34,0.75) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .gallery-label-always span {
+      font-size: clamp(0.65rem, 1.2vw, 0.72rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+    }
+
+    /* Contenu overlay hover */
+    .gallery-overlay-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gallery-overlay-content .overlay-icon {
+      width: 32px; height: 32px;
+      background: rgba(201,168,76,0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .gallery-overlay-content span {
+      font-size: clamp(0.72rem, 1.3vw, 0.82rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* Skeleton loading */
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.04) 25%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.04) 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton 1.5s ease-in-out infinite;
+      z-index: 1;
+      opacity: 1;
+      transition: opacity 0.4s;
+    }
+    .gallery-item.loaded::before { opacity: 0; pointer-events: none; }
+
+    @keyframes skeleton {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(6,16,34,0.95);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: min(90vw, 960px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-caption {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -44px; right: 0;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .lightbox-close:hover { background: var(--gold); border-color: var(--gold); color: var(--deep); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .lightbox-nav:hover { background: var(--gold); border-color: var(--gold); color: var(--deep); }
+    .lightbox-nav.prev { left: -60px; }
+    .lightbox-nav.next { right: -60px; }
+
+    .lightbox-counter {
+      position: absolute;
+      top: -44px; left: 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* CTA galerie */
+    .gallery-cta {
+      text-align: center;
+      margin-top: clamp(28px, 4vw, 44px);
+    }
+
+    #temoignages { background: var(--off-white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: clamp(14px, 2vw, 24px);
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px,3vw,32px);
+      box-shadow: 0 4px 24px rgba(11,28,52,0.06);
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 14px; }
+    .testimonial-stars span { color: var(--gold); font-size: 1rem; }
+    .testimonial-card blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem,2vw,1.05rem);
+      font-style: italic; line-height: 1.65;
+      color: var(--navy); margin-bottom: 18px;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 1rem; color: var(--white); flex-shrink: 0;
+    }
+    .testimonial-author strong { display: block; font-size: 0.88rem; font-weight: 600; }
+    .testimonial-author span { font-size: 0.76rem; color: var(--grey); }
+
+    #contact { background: var(--white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(32px, 6vw, 60px);
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem,3vw,1.5rem);
+      margin-bottom: 12px;
+    }
+    .contact-info p {
+      font-size: clamp(0.85rem,1.5vw,0.9rem);
+      color: var(--grey-dark); line-height: 1.8; margin-bottom: 28px;
+    }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+    .contact-detail-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail div strong {
+      display: block; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--navy); margin-bottom: 2px;
+    }
+    .contact-detail div span { font-size: clamp(0.8rem,1.5vw,0.86rem); color: var(--grey-dark); line-height: 1.6; }
+
+    .contact-social { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .social-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: var(--transition);
+      border: 1px solid var(--grey-light); background: var(--off-white);
+    }
+    .social-btn:hover { background: var(--navy); border-color: var(--navy); color: var(--white); transform: translateY(-3px); }
+
+    .contact-form-wrap {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px,4vw,40px);
+    }
+    .contact-form-wrap h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem,3vw,1.5rem);
+      margin-bottom: clamp(20px,3vw,28px);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 14px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-dark);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px 14px;
+      border: 1px solid var(--grey-light);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: clamp(0.85rem,1.5vw,0.9rem);
+      color: var(--navy);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(46,123,196,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-status {
+      padding: 12px 14px; border-radius: var(--radius);
+      font-size: 0.85rem; margin-top: 12px; display: none;
+    }
+    .form-status.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .form-status.error   { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+    footer {
+      background: var(--deep);
+      color: var(--white);
+      padding: var(--space-xl) var(--px) 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: clamp(24px, 4vw, 48px);
+      margin-bottom: clamp(32px,5vw,48px);
+    }
+
+    .footer-brand .logo-main {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem,2.5vw,1.4rem);
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .footer-brand .logo-main span { color: var(--gold); }
+    .footer-brand .logo-sub {
+      font-size: 0.6rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--grey); margin-bottom: 18px;
+    }
+    .footer-brand p {
+      font-size: clamp(0.78rem,1.4vw,0.84rem);
+      color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 280px;
+    }
+
+    footer h4 {
+      font-family: var(--font-body);
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.3s; }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .footer-contact-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: clamp(0.76rem,1.4vw,0.82rem);
+      color: rgba(255,255,255,0.5); line-height: 1.5;
+    }
+    .footer-contact-item span:first-child { flex-shrink: 0; margin-top: 1px; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 22px 0;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: clamp(0.68rem,1.2vw,0.76rem); color: rgba(255,255,255,0.3); }
+    .footer-bottom a { color: var(--gold); }
+
+    .fab-group {
+      position: fixed;
+      bottom: clamp(16px,3vw,28px);
+      right: clamp(16px,3vw,28px);
+      z-index: 8000;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 10px;
+    }
+    .fab {
+      width: clamp(46px,6vw,52px); height: clamp(46px,6vw,52px);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: var(--transition);
+      color: var(--white); border: none;
+    }
+    .fab:hover { transform: scale(1.12); }
+    .fab.whatsapp { background: #25D366; }
+    .fab.top {
+      background: var(--navy); font-size: 1rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .fab.top.visible { opacity: 1; pointer-events: all; }
+    .fab-label {
+      position: absolute; right: 60px;
+      background: var(--deep); color: var(--white);
+      font-size: 0.72rem; padding: 5px 10px;
+      border-radius: 4px; white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .fab:hover .fab-label { opacity: 1; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    .gold-divider { width: 48px; height: 2px; background: var(--gold); margin: 20px 0; }
+
+    .bg-navy   { background: var(--navy); }
+    .bg-blue   { background: var(--blue); }
+    .bg-sky    { background: var(--sky); }
+    .bg-gold   { background: var(--gold); }
+    .bg-teal   { background: #1a7a6e; }
+    .bg-purple { background: #4a3f7a; }
+    .bg-rust   { background: #7a3f2e; }
+    .color-white { color: var(--white); }
+
+    @media (max-width: 1100px) {
+      .nav-links { gap: clamp(12px, 1.8vw, 24px); }
+      .nav-cta .btn { padding: 8px 14px; font-size: 0.7rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-badges { display: none; }
+      .hero-scroll { display: none; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+      .hero-btns .btn { width: 100%; max-width: 320px; justify-content: center; }
+      .services-banner { flex-direction: column; text-align: center; padding: 20px; }
+      .services-banner .quote-mark { display: none; }
+
+      /* Galerie tablette : 2 colonnes */
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        grid-auto-rows: clamp(160px, 35vw, 220px);
+      }
+      .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+
+      /* Lightbox navigation : déplacée sous l'image */
+      .lightbox-nav.prev { left: -10px; top: auto; transform: none; bottom: 10px; }
+      .lightbox-nav.next { right: -10px; top: auto; transform: none; bottom: 10px; }
+
+      .form-row { grid-template-columns: 1fr; gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .agences-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .accred-flex { flex-direction: column; align-items: stretch; }
+      .accred-badge { max-width: 100%; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+      .footer-brand p { max-width: 100%; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Galerie mobile : 1 colonne */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: clamp(180px, 55vw, 240px);
+      }
+      .lightbox-nav { display: none; }
+      .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+      .nav-logo .logo-sub { display: none; }
+      .contact-form-wrap .btn { width: 100%; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+      .phone-btn { font-size: 0.78rem; padding: 9px 12px; }
+      .agence-body { padding: 16px; }
+      .fab { width: 44px; height: 44px; font-size: 1.1rem; }
+    }
+
+    @media (max-width: 360px) {
+      :root { --px: 14px; }
+      .hero-title { font-size: 1.9rem; }
+      .hero-btns .btn { max-width: 100%; }
+      .why-card { padding: 20px 16px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-item { padding: 16px 10px; }
+      .service-body { padding: 16px; }
+      .contact-form-wrap { padding: 18px 14px; }
+    }
+
+    @media (hover: none) {
+      .why-card:hover,
+      .service-card:hover,
+      .agence-card:hover,
+      .testimonial-card:hover,
+      .accred-badge:hover { transform: none; }
+      .gallery-item:hover .gallery-overlay { opacity: 1; }
+      .gallery-item:hover .gallery-img { filter: brightness(0.88); transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Accueil">
+      <div class="logo-main">Espace <span>Lunetterie</span> Optique</div>
+      <div class="logo-sub">Sarl &nbsp;·&nbsp; Le plaisir de mieux voir</div>
+    </a>
+    <ul class="nav-links" role="navigation">
+      <li><a href="#hero" class="active">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#agences">Nos Agences</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="Galerie.html" class="btn-catalogue">📖 Catalogue</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+237222232699" class="btn btn-outline" style="padding:8px 18px;font-size:0.7rem;">📞 Appeler</a>
+      <a href="#contact" class="btn btn-gold" style="padding:8px 18px;font-size:0.7rem;">Rendez-vous</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu principal">
+  <button class="close-btn" id="closeMenu" aria-label="Fermer">✕</button>
+  <a href="#hero"     class="mobile-link">Accueil</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#agences"  class="mobile-link">Nos Agences</a>
+  <a href="#galerie"  class="mobile-link">Galerie</a>
+  <a href="#contact"  class="mobile-link">Contact</a>
+  <a href="Galerie.html" class="mobile-link mobile-catalogue">📖 Catalogue</a>
+  <a href="tel:+237222232699" class="btn btn-gold" style="margin-top:16px;width:100%;max-width:280px;">📞 Appeler maintenant</a>
+</div>
+
+<section id="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ &nbsp; Optique Professionnelle &nbsp; ✦</div>
+    <h1 class="hero-title">
+      Espace Lunetterie<strong>Optique Sarl</strong>
+    </h1>
+    <p class="hero-slogan">« Le plaisir de mieux voir ! »</p>
+    <p class="hero-desc">
+      Votre spécialiste en santé visuelle à Yaoundé et Douala.
+      Examens de vue, lunettes optiques, solaires et lentilles de contact —
+      avec l'expertise de nos opticiens diplômés.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-gold">📅 Prendre rendez-vous</a>
+      <a href="#services" class="btn btn-outline">✦ Découvrir nos services</a>
+    </div>
+  </div>
+  <div class="hero-badges" aria-hidden="true">
+    <div class="hero-badge-item"><div class="icon">🏥</div>Agréé Minsanté</div>
+    <div class="hero-badge-item"><div class="icon">🛡️</div>Agréé Assurances</div>
+    <div class="hero-badge-item"><div class="icon">🎓</div>Opticiens Diplômés</div>
+    <div class="hero-badge-item"><div class="icon">💎</div>Solutions Adaptées</div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<section id="why" aria-labelledby="why-title">
+  <div class="section-head reveal">
+    <div class="section-label">Pourquoi nous choisir</div>
+    <h2 class="section-title" id="why-title">Votre vision,<br><em>notre priorité absolue</em></h2>
+    <p class="section-sub">Nous combinons expertise médicale, technologie moderne et service personnalisé pour vous offrir la meilleure expérience optique.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon">🎓</div>
+      <h3>Opticiens Diplômés</h3>
+      <p>Notre équipe de professionnels certifiés vous garantit des examens de vue précis et des conseils adaptés à vos besoins visuels spécifiques.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon">🏥</div>
+      <h3>Agréé Minsanté</h3>
+      <p>Établissement officiellement agréé par le Ministère de la Santé du Cameroun, gage de qualité et de conformité aux normes sanitaires.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon">🛡️</div>
+      <h3>Agréé Assurances</h3>
+      <p>Partenaire des principales sociétés d'assurances, nous facilitons la prise en charge de vos équipements optiques selon votre couverture.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon">💰</div>
+      <h3>Toutes les Bourses</h3>
+      <p>Des solutions adaptées à chaque budget, sans compromis sur la qualité. Un large choix de montures et verres pour tous les profils.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon">🔬</div>
+      <h3>Équipements Modernes</h3>
+      <p>Nos agences disposent des équipements optiques de dernière génération pour des examens précis et un service de qualité supérieure.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon">🗺️</div>
+      <h3>3 Agences</h3>
+      <p>Présents à Yaoundé (2 agences) et Douala, nous sommes au plus près de vous pour vous accompagner dans votre santé visuelle.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stats" aria-label="Chiffres clés">
+  <div class="stats-grid">
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number"><span id="stat-clients">0</span><span>+</span></div>
+      <div class="stat-label">Clients Satisfaits</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number"><span id="stat-years">0</span><span>+</span></div>
+      <div class="stat-label">Années d'Expérience</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number"><span id="stat-satisfaction">0</span><span>%</span></div>
+      <div class="stat-label">Taux de Satisfaction</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number"><span id="stat-agences">0</span></div>
+      <div class="stat-label">Agences au Cameroun</div>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-title">
+  <div class="section-head reveal">
+    <div class="section-label">Ce que nous offrons</div>
+    <h2 class="section-title" id="services-title">Nos <em>Services</em><br>Spécialisés</h2>
+  </div>
+  <div class="services-banner reveal">
+    <div class="quote-mark">"</div>
+    <p>À chaque besoin, nous offrons une solution adaptée à votre bourse grâce à l'expertise technique de nos opticiens diplômés.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#0B1C34,#1A3A6B);">👁️</div>
+        <span class="service-badge">Santé Visuelle</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🔍</div>
+        <h3>Examen de Vue</h3>
+        <p>Évaluation complète de votre acuité visuelle par nos opticiens diplômés. Détection précoce des troubles visuels avec des instruments de précision pour une correction optimale.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">Prendre RDV</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-2">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#1A3A6B,#2E7BC4);">🩺</div>
+        <span class="service-badge">Consultation</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🩺</div>
+        <h3>Consultation Optique</h3>
+        <p>Conseil professionnel sur vos besoins visuels, choix du traitement adapté et suivi personnalisé de votre santé oculaire par nos spécialistes qualifiés.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">En savoir plus</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-3">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#1a7a6e,#2E7BC4);">👓</div>
+        <span class="service-badge">Optique</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">👓</div>
+        <h3>Lunettes Optiques</h3>
+        <p>Large sélection de montures de qualité pour tous les styles et tous les budgets. Verres uniformes, progressifs, antireflets — taillés selon votre ordonnance.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">Voir la collection</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#7a3f2e,#C9A84C);">🕶️</div>
+        <span class="service-badge">Solaires</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🕶️</div>
+        <h3>Lunettes Solaires</h3>
+        <p>Protection solaire UV certifiée et style contemporain. Montures tendance de marques reconnues — pour préserver votre vue tout en affirmant votre personnalité.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">Découvrir</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-2">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#2E7BC4,#0B1C34);">🔵</div>
+        <span class="service-badge">Lentilles</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🔵</div>
+        <h3>Lentilles de Contact</h3>
+        <p>Lentilles souples, rigides, journalières ou mensuelles. Adaptation professionnelle par nos opticiens pour un confort optimal au quotidien et lors du sport.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">En savoir plus</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-3">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#4a3f7a,#2E7BC4);">🔧</div>
+        <span class="service-badge">Réparation</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🔧</div>
+        <h3>Ajustement & Réparation</h3>
+        <p>Ajustement précis, remplacement de branches, resserrage de vis, redressage de montures. Nos techniciens restituent à vos lunettes leur état d'origine rapidement.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">Déposer mes lunettes</a>
+      </div>
+    </article>
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-img-wrap">
+        <div class="service-img-placeholder" style="background:linear-gradient(135deg,#0B1C34,#1a7a6e);">💬</div>
+        <span class="service-badge">Conseil</span>
+      </div>
+      <div class="service-body">
+        <div class="service-icon">💬</div>
+        <h3>Conseils Personnalisés</h3>
+        <p>Accompagnement individualisé en santé visuelle : nutrition oculaire, hygiène visuelle numérique, prévention de la myopie chez l'enfant et bien plus encore.</p>
+        <a href="#contact" class="btn btn-navy" style="align-self:flex-start;">Nous consulter</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="accreditations" aria-labelledby="accred-title">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label" style="justify-content:center;">Nos agréments & certifications</div>
+    <h2 class="section-title" id="accred-title" style="text-align:center;">Une <em>confiance</em><br>institutionnelle</h2>
+    <div class="gold-divider" style="margin:20px auto;"></div>
+    <p class="section-sub" style="max-width:540px;margin:0 auto 8px;">Nos accréditations officielles sont le gage de notre sérieux, de notre conformité aux normes et de la qualité de nos soins.</p>
+  </div>
+  <div class="accred-flex">
+    <div class="accred-badge reveal reveal-delay-1">
+      <div class="accred-icon">🛡️</div>
+      <div>
+        <strong>Sociétés d'Assurances</strong>
+        <span>Partenaire conventionné pour la prise en charge de vos équipements optiques</span>
+      </div>
+    </div>
+    <div class="accred-badge reveal reveal-delay-2">
+      <div class="accred-icon">🏥</div>
+      <div>
+        <strong>Ministère de la Santé (Minsanté)</strong>
+        <span>Établissement agréé et contrôlé par les autorités sanitaires camerounaises</span>
+      </div>
+    </div>
+    <div class="accred-badge reveal reveal-delay-3">
+      <div class="accred-icon">🎓</div>
+      <div>
+        <strong>Opticiens Diplômés d'État</strong>
+        <span>Toute notre équipe est titulaire d'un diplôme d'opticien-lunetier reconnu</span>
+      </div>
+    </div>
+    <div class="accred-badge reveal reveal-delay-1">
+      <div class="accred-icon">💎</div>
+      <div>
+        <strong>Solutions Adaptées</strong>
+        <span>Gammes et tarifs accessibles à tous les profils et budgets</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agences" aria-labelledby="agences-title">
+  <div class="section-head reveal">
+    <div class="section-label">Notre réseau</div>
+    <h2 class="section-title" id="agences-title">Nos <em>Agences</em><br>au Cameroun</h2>
+    <p class="section-sub">Trois points de vente à votre service à Yaoundé et Douala, pour vous offrir proximité et excellence à chaque visite.</p>
+  </div>
+  <div class="agences-grid">
+    <article class="agence-card reveal reveal-delay-1">
+      <div class="agence-header">
+        <div class="agence-city">Yaoundé — Agence 1</div>
+        <h3>Mvog-Ada</h3>
+        <div class="agence-num">01</div>
+      </div>
+      <div class="agence-map">
+        <div class="agence-map-placeholder">
+          <span>📍</span>
+          <strong>Carrefour MRS Mvog-Ada</strong>
+          <small>Ancien Smart MVOG-ADA, face restaurant le Jawa</small>
+        </div>
+      </div>
+      <div class="agence-body">
+        <div class="agence-info-row">
+          <div class="agence-info-icon">📍</div>
+          <div class="agence-info-text">
+            <strong>Adresse</strong>
+            Carrefour MRS Mvog-Ada (ancien Smart MVOG-ADA, face restaurant le Jawa) — Yaoundé
+          </div>
+        </div>
+        <div class="agence-info-row">
+          <div class="agence-info-icon">🕐</div>
+          <div class="agence-info-text">
+            <strong>Horaires</strong>
+            Lun–Ven : 08h00 – 18h30 &nbsp;|&nbsp; Sam : 08h00 – 16h00
+          </div>
+        </div>
+        <div class="agence-phones">
+          <a href="tel:+237222232699" class="phone-btn">📞 (+237) 222 23 26 99</a>
+          <a href="tel:+237699749721" class="phone-btn">📞 (+237) 699 74 97 21</a>
+          <a href="tel:+237677342462" class="phone-btn">📞 (+237) 677 34 24 62</a>
+        </div>
+        <a href="https://wa.me/237699749721" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center;">💬 WhatsApp</a>
+      </div>
+    </article>
+    <article class="agence-card reveal reveal-delay-2">
+      <div class="agence-header" style="background:linear-gradient(135deg,#1A3A6B,#2E7BC4);">
+        <div class="agence-city">Yaoundé — Agence 2</div>
+        <h3>Simbock</h3>
+        <div class="agence-num">02</div>
+      </div>
+      <div class="agence-map">
+        <div class="agence-map-placeholder" style="background:linear-gradient(135deg,#e8f4fd,#f0f8ff);">
+          <span>📍</span>
+          <strong>Entre Tradex Simbock et carrefour Simbock</strong>
+          <small>Face auto-école canadienne</small>
+        </div>
+      </div>
+      <div class="agence-body">
+        <div class="agence-info-row">
+          <div class="agence-info-icon">📍</div>
+          <div class="agence-info-text">
+            <strong>Adresse</strong>
+            Entre station Tradex Simbock et carrefour Simbock, face auto-école canadienne — Yaoundé
+          </div>
+        </div>
+        <div class="agence-info-row">
+          <div class="agence-info-icon">🕐</div>
+          <div class="agence-info-text">
+            <strong>Horaires</strong>
+            Lun–Ven : 08h30 – 20h30 &nbsp;|&nbsp; Sam : 08h00 – 16h00
+          </div>
+        </div>
+        <div class="agence-phones">
+          <a href="tel:+237673702875" class="phone-btn">📞 (+237) 673 70 28 75</a>
+          <a href="tel:+237656606995" class="phone-btn">📞 (+237) 656 60 69 95</a>
+        </div>
+        <a href="https://wa.me/237673702875" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center;">💬 WhatsApp</a>
+      </div>
+    </article>
+    <article class="agence-card reveal reveal-delay-3">
+      <div class="agence-header" style="background:linear-gradient(135deg,#0B1C34,#1a7a6e);">
+        <div class="agence-city">Douala</div>
+        <h3>Bonadibong</h3>
+        <div class="agence-num">03</div>
+      </div>
+      <div class="agence-map">
+        <div class="agence-map-placeholder" style="background:linear-gradient(135deg,#e8fdf5,#f0fff8);">
+          <span>📍</span>
+          <strong>Derrière ancienne pharmacie de la République</strong>
+          <small>Lieu-dit nouvelle route Bonadibong — Douala</small>
+        </div>
+      </div>
+      <div class="agence-body">
+        <div class="agence-info-row">
+          <div class="agence-info-icon">📍</div>
+          <div class="agence-info-text">
+            <strong>Adresse</strong>
+            Derrière ancienne pharmacie de la République, lieu-dit nouvelle route Bonadibong — Douala
+          </div>
+        </div>
+        <div class="agence-info-row">
+          <div class="agence-info-icon">🕐</div>
+          <div class="agence-info-text">
+            <strong>Horaires</strong>
+            Lun–Ven : 08h30 – 18h30 &nbsp;|&nbsp; Sam : 08h00 – 14h00
+          </div>
+        </div>
+        <div class="agence-phones">
+          <a href="tel:+237233428491" class="phone-btn">📞 (+237) 233 42 84 91</a>
+          <a href="tel:+237673784344" class="phone-btn">📞 (+237) 673 78 43 44</a>
+          <a href="tel:+237695053096" class="phone-btn">📞 (+237) 695 05 30 96</a>
+        </div>
+        <a href="https://wa.me/237673784344" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center;">💬 WhatsApp</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GALERIE — VRAIES PHOTOS UNSPLASH
+═══════════════════════════════════════════ -->
+<section id="galerie" aria-labelledby="galerie-title">
+  <div class="reveal">
+    <div class="section-label" style="color:rgba(201,168,76,0.8);">Notre univers</div>
+    <h2 class="section-title white" id="galerie-title">Galerie <em>Photos</em></h2>
+    <p class="section-sub white">Découvrez nos espaces modernes, notre collection de montures et nos équipements de pointe.</p>
+  </div>
+
+  <div class="gallery-grid" aria-label="Galerie photos" id="galleryGrid">
+
+    <div class="gallery-item reveal" tabindex="0" data-index="0" aria-label="Consultation optique">
+      <img
+        class="gallery-img"
+        src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80"
+        alt="Consultation optique professionnelle"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Consultation Optique</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🔍</div>
+          <span>Consultation Optique</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal reveal-delay-1" tabindex="0" data-index="1" aria-label="Lunettes optiques">
+      <img
+        class="gallery-img"
+        src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&q=80"
+        src="photo18.png"
+        src="photo22.png"
+        alt="Collection de lunettes optiques"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Lunettes Optiques</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">👓</div>
+          <span>Lunettes Optiques</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal reveal-delay-2" tabindex="0" data-index="2" aria-label="Lunettes solaires">
+      <img
+        class="gallery-img"
+        src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&q=80"
+        alt="Lunettes solaires tendance"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Lunettes Solaires</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🕶️</div>
+          <span>Lunettes Solaires</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal reveal-delay-3" tabindex="0" data-index="3" aria-label="Examen de vue">
+      <img
+        class="gallery-img"
+        src="examen.png"
+        alt="Équipement d'examen de vue"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Examen de Vue</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🔬</div>
+          <span>Examen de Vue</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal" tabindex="0" data-index="4" aria-label="Lentilles de contact">
+      <img
+        class="gallery-img"
+        src="lentille.png"
+        alt="Lentilles de contact"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Lentilles de Contact</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🔵</div>
+          <span>Lentilles de Contact</span>
+        </div>
+      </div>
+    </div>
+
+      <div class="gallery-label-always"><span>Notre Équipe</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">👨‍⚕️</div>
+          <span>Notre Équipe</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal reveal-delay-2" tabindex="0" data-index="6" aria-label="Espace agence">
+      <img
+        class="gallery-img"
+        src="reparation.jpg"
+        alt="Espace agence Espace Lunetterie Optique"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Espace Agence</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🏪</div>
+          <span>Espace Agence</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal reveal-delay-3" tabindex="0" data-index="7" aria-label="Atelier réparation">
+      <img
+        class="gallery-img"
+        src="Atelier.jpg"
+        alt="Atelier de réparation de lunettes"
+        loading="lazy"
+      />
+      <div class="gallery-label-always"><span>Atelier Réparation</span></div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <div class="overlay-icon">🔧</div>
+          <span>Atelier Réparation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="gallery-cta reveal">
+    <a href="Galerie.html" class="btn btn-gold">📖 Voir le catalogue complet</a>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse photo">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
+    <span class="lightbox-counter" id="lightboxCounter">1 / 8</span>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Photo précédente">‹</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Photo suivante">›</button>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
+
+<section id="temoignages" aria-labelledby="temoignages-title">
+  <div class="section-head reveal">
+    <div class="section-label">Ce qu'ils disent</div>
+    <h2 class="section-title" id="temoignages-title">Témoignages<br><em>de nos clients</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"Personnel très professionnel et attentionné. L'examen de vue a été réalisé avec beaucoup de soin et mes nouvelles lunettes sont parfaites. Je recommande vivement !"</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar bg-blue">ML</div>
+        <div><strong>Marie-Louise N.</strong><span>Cliente — Yaoundé</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"Ma mutuelle d'assurance a été prise en charge sans difficulté. Le cadre est agréable, les opticiens sont diplômés et à l'écoute. Une vraie référence en optique au Cameroun."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#1a7a6e;">JB</div>
+        <div><strong>Jean-Baptiste K.</strong><span>Client — Douala</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"J'ai fait réparer mes lunettes en urgence — service rapide et efficace. Ils ont même réajusté la monture gratuitement. Très bon rapport qualité-prix, je suis conquis."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#C9A84C;color:#0B1C34;">PS</div>
+        <div><strong>Paul S.</strong><span>Client — Yaoundé</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"Excellente prise en charge pour mes lentilles de contact. L'opticien m'a bien expliqué comment les entretenir. Professionnalisme et bonne humeur au rendez-vous !"</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#4a3f7a;">CA</div>
+        <div><strong>Christelle A.</strong><span>Cliente — Yaoundé</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-title">
+  <div class="section-head reveal">
+    <div class="section-label">Nous contacter</div>
+    <h2 class="section-title" id="contact-title">Parlons de<br><em>votre vision</em></h2>
+    <p class="section-sub">Un doute sur votre vue ? Besoin d'un conseil ou d'un rendez-vous ? Notre équipe est disponible pour vous répondre rapidement.</p>
+  </div>
+  <div class="contact-layout">
+    <div class="reveal">
+      <h3>Informations de contact</h3>
+      <p>Contactez-nous par téléphone, email ou en vous rendant directement dans l'une de nos agences. Nous serons ravis de vous accueillir.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <div><strong>Email</strong><span><a href="mailto:el_optique@yahoo.fr" style="color:var(--sky);">el_optique@yahoo.fr</a></span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div><strong>Yaoundé Agence 1</strong><span>(+237) 222 23 26 99 · 699 74 97 21 · 677 34 24 62</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div><strong>Yaoundé Agence 2</strong><span>(+237) 673 70 28 75 · 656 60 69 95</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div><strong>Douala</strong><span>(+237) 233 42 84 91 · 673 78 43 44 · 695 05 30 96</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📮</div>
+        <div><strong>Boîte postale</strong><span>BP 13441 — Yaoundé, Cameroun</span></div>
+      </div>
+      <div class="contact-social" aria-label="Réseaux sociaux">
+        <a href="#" class="social-btn" aria-label="Facebook" title="Facebook">📘</a>
+        <a href="#" class="social-btn" aria-label="Instagram" title="Instagram">📸</a>
+        <a href="#" class="social-btn" aria-label="Twitter" title="Twitter/X">🐦</a>
+        <a href="https://wa.me/237699749721" class="social-btn" aria-label="WhatsApp" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="contact-form-wrap reveal reveal-delay-2">
+      <h3>Envoyez-nous un message</h3>
+      <form id="contactForm" novalidate aria-label="Formulaire de contact">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required autocomplete="family-name" />
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required autocomplete="given-name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="(+237) …" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label for="agence">Agence concernée</label>
+          <select id="agence" name="agence">
+            <option value="">Sélectionner une agence…</option>
+            <option value="yaounde1">Yaoundé — Mvog-Ada</option>
+            <option value="yaounde2">Yaoundé — Simbock</option>
+            <option value="douala">Douala — Bonadibong</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:18px;">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Décrivez votre besoin ou posez votre question…" required></textarea>
+        </div>
+        <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off" />
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.85rem;">📩 Envoyer le message</button>
+        <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-main">Espace <span>Lunetterie</span> Optique</div>
+      <div class="logo-sub">Sarl — Cameroun</div>
+      <p>Votre spécialiste en santé visuelle depuis des années. Agréé par les sociétés d'assurances et par le Minsanté. Opticiens diplômés à votre service à Yaoundé et Douala.</p>
+      <div class="contact-social" style="margin-top:18px;">
+        <a href="#" class="social-btn" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);" aria-label="Facebook">📘</a>
+        <a href="#" class="social-btn" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);" aria-label="Instagram">📸</a>
+        <a href="https://wa.me/237699749721" class="social-btn" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="#hero">Accueil</a></li>
+        <li><a href="#why">Pourquoi nous</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#agences">Nos Agences</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Galerie.html" style="color:var(--gold);">📖 Catalogue</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nos Services</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Examen de vue</a></li>
+        <li><a href="#services">Consultation optique</a></li>
+        <li><a href="#services">Lunettes optiques</a></li>
+        <li><a href="#services">Lunettes solaires</a></li>
+        <li><a href="#services">Lentilles de contact</a></li>
+        <li><a href="#services">Réparation & ajustement</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Coordonnées</h4>
+      <div class="footer-contact-items">
+        <div class="footer-contact-item">
+          <span>📧</span>
+          <a href="mailto:el_optique@yahoo.fr" style="color:var(--gold);">el_optique@yahoo.fr</a>
+        </div>
+        <div class="footer-contact-item"><span>📮</span><span>BP 13441 — Yaoundé, Cameroun</span></div>
+        <div class="footer-contact-item"><span>📍</span><span>Yaoundé — Agence 1<br>(+237) 222 23 26 99</span></div>
+        <div class="footer-contact-item"><span>📍</span><span>Yaoundé — Agence 2<br>(+237) 673 70 28 75</span></div>
+        <div class="footer-contact-item"><span>📍</span><span>Douala<br>(+237) 233 42 84 91</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Espace Lunetterie Optique Sarl — Tous droits réservés. &nbsp;|&nbsp; BP : 13441 Yaoundé &nbsp;|&nbsp; <a href="mailto:el_optique@yahoo.fr">el_optique@yahoo.fr</a></p>
+    <p style="color:rgba(255,255,255,0.2);">Design professionnel — Site vitrine</p>
+  </div>
+</footer>
+
+<div class="fab-group" aria-label="Actions rapides">
+  <a href="https://wa.me/237699749721?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20Espace%20Lunetterie%20Optique."
+     target="_blank" rel="noopener"
+     class="fab whatsapp"
+     aria-label="Contacter via WhatsApp"
+     title="WhatsApp">
+    <span>💬</span>
+    <span class="fab-label">WhatsApp</span>
+  </a>
+  <button class="fab top" id="backTop" aria-label="Retour en haut" title="Retour en haut">↑</button>
+</div>
+
+<script>
+  /* ── NAVBAR SCROLL ── */
+  const navbar  = document.getElementById('navbar');
+  const backTop = document.getElementById('backTop');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 80;
+    navbar.classList.toggle('scrolled', scrolled);
+    backTop.classList.toggle('visible', scrolled);
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── HAMBURGER ── */
+  const hamburger  = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu  = document.getElementById('closeMenu');
+
+  function openMenu() {
+    mobileMenu.classList.add('open'); hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open'); hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeMenu.addEventListener('click', closeMobileMenu);
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => { if (l.getAttribute('href').startsWith('#')) closeMobileMenu(); });
+  });
+  mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu(); });
+
+  /* ── SCROLL REVEAL ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── COUNTER ANIMATION ── */
+  const counters = [
+    { id: 'stat-clients',      target: 5000 },
+    { id: 'stat-years',        target: 15   },
+    { id: 'stat-satisfaction', target: 98   },
+    { id: 'stat-agences',      target: 3    },
+  ];
+  function animateCounters() {
+    counters.forEach(c => {
+      const el = document.getElementById(c.id);
+      if (!el) return;
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * c.target).toLocaleString('fr-FR');
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+  }, { threshold: 0.3 });
+  const statsSection = document.getElementById('stats');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  /* ── GALERIE : SKELETON LOADING ── */
+  document.querySelectorAll('.gallery-img').forEach(img => {
+    const item = img.closest('.gallery-item');
+    if (img.complete) {
+      item.classList.add('loaded');
+    } else {
+      img.addEventListener('load',  () => item.classList.add('loaded'));
+      img.addEventListener('error', () => { item.classList.add('loaded'); });
+    }
+  });
+
+  /* ── GALERIE : LIGHTBOX ── */
+  const galleryData = [
+    { src: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85', alt: 'Consultation optique professionnelle', caption: 'Consultation Optique' },
+    { src: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=1200&q=85', alt: 'Collection de lunettes optiques',       caption: 'Lunettes Optiques' },
+    { src: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1200&q=85', alt: 'Lunettes solaires tendance',             caption: 'Lunettes Solaires' },
+    { src: 'examen.png', alt: 'Équipement d\'examen de vue',            caption: 'Examen de Vue' },
+    { src: 'lentille.png', alt: 'Lentilles de contact',                   caption: 'Lentilles de Contact' },
+    { src: 'reparation.jpg', alt: 'Espace agence Espace Lunetterie Optique', caption: 'Espace Agence' },
+    { src: 'Atelier.jpg',    alt: 'Atelier de réparation de lunettes',       caption: 'Atelier Réparation' },
+  ];
+
+  const lightbox        = document.getElementById('lightbox');
+  const lightboxImg     = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxClose   = document.getElementById('lightboxClose');
+  const lightboxPrev    = document.getElementById('lightboxPrev');
+  const lightboxNext    = document.getElementById('lightboxNext');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    const d = galleryData[currentIndex];
+    lightboxImg.src = d.src;
+    lightboxImg.alt = d.alt;
+    lightboxCaption.textContent = d.caption;
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryData.length;
+  }
+
+  function prevPhoto() { currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); }
+  function nextPhoto() { currentIndex = (currentIndex + 1) % galleryData.length; updateLightbox(); }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+    item.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(parseInt(item.dataset.index)); });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', prevPhoto);
+  lightboxNext.addEventListener('click', nextPhoto);
+
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  prevPhoto();
+    if (e.key === 'ArrowRight') nextPhoto();
+  });
+
+  /* ── SWIPE SUPPORT MOBILE (lightbox) ── */
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  lightbox.addEventListener('touchend',   (e) => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) { diff > 0 ? nextPhoto() : prevPhoto(); }
+  });
+
+  /* ── CONTACT FORM ── */
+  const form       = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form._honey.value) return;
+    const nom = form.nom.value.trim(), prenom = form.prenom.value.trim();
+    const email = form.email.value.trim(), message = form.message.value.trim();
+    if (!nom || !prenom || !email || !message) {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = '⚠️ Veuillez remplir tous les champs obligatoires.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = '⚠️ Veuillez entrer une adresse email valide.';
+      return;
+    }
+    const agence = form.agence.value, tel = form.telephone.value.trim();
+    const body = encodeURIComponent(
+      `Nouveau message depuis le site web\n\nNom : ${nom} ${prenom}\nEmail : ${email}\n` +
+      (tel ? `Téléphone : ${tel}\n` : '') + (agence ? `Agence : ${agence}\n` : '') +
+      `\nMessage :\n${message}`
+    );
+    const subject = encodeURIComponent(`Message de ${nom} ${prenom} — Site ELO`);
+    window.location.href = `mailto:el_optique@yahoo.fr?subject=${subject}&body=${body}`;
+    formStatus.className = 'form-status success';
+    formStatus.textContent = '✅ Votre client mail va s\'ouvrir. Merci de nous avoir contactés — nous vous répondrons très rapidement !';
+    form.reset();
+  });
+</script>
+</body>
+</html>
